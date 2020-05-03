@@ -7,7 +7,4 @@ class PagesController < ApplicationController
 
   def success
   end
-
-  def management
-  end
 end

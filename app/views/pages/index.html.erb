@@ -1,8 +1,7 @@
-<h1>Welcom Jason's donation page</h1>
+<h1>Welcome to Jason's donation page</h1>
 
 <% if user_signed_in? %>
-<h2><%= link_to 'Log out', destroy_user_session_path %></h2>
+<%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "authenticaion" %>
 <% else %>
-<h2><%= link_to 'Log in', new_user_session_path %></h2>
-<h2><%= link_to 'Sign up', new_user_registration_path %></h2>
+<%= link_to 'Log in', new_user_session_path, class: "authenticaion" %> | <%= link_to 'Sign up', new_user_registration_path, class: "authenticaion" %>
 <% end %>
