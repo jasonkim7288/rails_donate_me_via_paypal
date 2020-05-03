@@ -5,6 +5,9 @@ class PagesController < ApplicationController
   def donation
   end
 
+  def success
+  end
+
   def management
   end
 end

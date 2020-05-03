@@ -1,2 +1,8 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<h1>Welcom Jason's donation page</h1>
+
+<% if user_signed_in? %>
+<h2><%= link_to 'Log out', destroy_user_session_path %></h2>
+<% else %>
+<h2><%= link_to 'Log in', new_user_session_path %></h2>
+<h2><%= link_to 'Sign up', new_user_registration_path %></h2>
+<% end %>
