@@ -1,0 +1,20 @@
+<section>
+    <h1>Thank you for helping me</h1>
+    <h2>You are investing money for your great future! </h2>
+    <h2>Your donation history</h2>
+    <% if current_user.payments.length != 0 %>
+        <table>
+            <tr>
+                <th>Amount</th>
+                <th>Comment</th>
+                <th>When</th>
+            </tr>
+            <% current_user.payments.each do |payment| %>
+                <tr>
+                    <td><%= payment.amount %></td>
+                    <td><%= payment.comment %></td>
+                    <td><%= payment.created_at.to_time.strftime("%B %e at %l:%M %p") %></td>
+                </tr>
+            <% end %>
+        </table>
+</section>

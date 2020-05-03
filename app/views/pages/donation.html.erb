@@ -1,2 +1,5 @@
-<h1>Thank you for helping me</h1>
-<h3>You are investing money for your great future! </h3>
+<% if current_user.admin == true %>
+    <%= render 'partials/management' %>
+<% else %>
+    <%= render 'partials/user_donation' %>
+<% end %>
