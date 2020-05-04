@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
     protect_from_forgery except: [:donation]
+    before_action :authenticate_user!, only: [:create]
+
     def donation
         @payment = Payment.new()
     end
@@ -15,11 +17,10 @@ class PagesController < ApplicationController
                 notify_url: "http://7ebf2177.ngrok.io/notify",
                 amount: @payment.amount,
                 mc_currency: "AUD",
-                country: ""
                 item_name: "Donation from #{@payment.user.user_name}",
                 item_number: @payment.id,
                 quantity: "1",
-                return: "http://7ebf2177.ngrok.io/pages/donation"
+                return: "http://7ebf2177.ngrok.io"
             }
             redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?" + value.to_query
         else

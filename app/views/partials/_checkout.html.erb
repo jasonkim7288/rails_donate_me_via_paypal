@@ -2,7 +2,7 @@
     <%= form_with model: @payment, url: '/pages/create' do |f| %>
         <table>
             <tr>
-                <td><%= f.label "Amount (AUD)" %></td>
+                <td><%= f.label :amount %> (USD)</td>
                 <td>$ <%= f.text_field :amount %></td>
             </tr>
             <tr>
