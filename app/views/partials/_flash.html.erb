@@ -1,4 +1,6 @@
-<section>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-</section>
+<% if notice || alert %>
+    <section>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+    </section>
+<% end %>
