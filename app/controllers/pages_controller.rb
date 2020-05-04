@@ -3,6 +3,10 @@ class PagesController < ApplicationController
     before_action :authenticate_user!, only: [:create]
 
     def donation
+        @total_amount = 0
+        current_user.payments.each do |payment|
+            @total_amount += payment.amount
+        end
         @payment = Payment.new()
     end
 
@@ -14,13 +18,13 @@ class PagesController < ApplicationController
                 business: "jason.kim.seller@gmail.com",
                 cmd: "_xclick",
                 upload: 1,
-                notify_url: "http://7ebf2177.ngrok.io/notify",
+                notify_url: "http://06bd9b67.ngrok.io/notify",
                 amount: @payment.amount,
                 mc_currency: "AUD",
                 item_name: "Donation from #{@payment.user.user_name}",
                 item_number: @payment.id,
                 quantity: "1",
-                return: "http://7ebf2177.ngrok.io"
+                return: "http://06bd9b67.ngrok.io"
             }
             redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?" + value.to_query
         else
