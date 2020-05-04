@@ -1,5 +1,8 @@
-<% if current_user.admin == true %>
-    <%= render 'partials/management' %>
-<% else %>
-    <%= render 'partials/user_donation' %>
+<%= render 'partials/flash' %>
+<% if user_signed_in? %>
+    <% if current_user.admin == true %>
+        <%= render 'partials/management' %>
+    <% else %>
+        <%= render 'partials/user_donation' %>
+    <% end %>
 <% end %>

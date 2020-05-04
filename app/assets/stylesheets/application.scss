@@ -22,11 +22,32 @@
 body {
     background-image: url("https://images.unsplash.com/photo-1527788263495-3518a5c1c42d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1383&q=80");
     background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #ffffff8f;
+    background-size: auto;
+    background-color: #ffffffd7;
     background-blend-mode: soft-light;
 }
 
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #b8c0d4b9;
+}
+
+section {
+    padding: 50px;
+    .history {
+        margin-top: 50px;
+    }
+}
+
+aside {
+    position: fixed;
+    right: 20px;
+    top: 218px;
+}
 .notice {
     color: blue;
 }
@@ -58,6 +79,8 @@ input {
     border: none;
     background-repeat: no-repeat;
     background-size: contain;
-   
+    &:hover {
+        cursor: pointer;
+    }
     
 }

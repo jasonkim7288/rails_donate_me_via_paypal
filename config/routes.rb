@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'pages/donation'
   get 'pages/success'
   post 'pages/create'
-  root 'pages#index'
+  post '/notify', to: 'pages#notify'
+  root 'pages#donation'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

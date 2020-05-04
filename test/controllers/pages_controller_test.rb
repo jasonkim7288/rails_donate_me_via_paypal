@@ -15,5 +15,6 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     get pages_management_url
     assert_response :success
   end
+  
 
 end

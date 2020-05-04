@@ -1,25 +1,26 @@
 <section>
     <h1>Thank you for helping me</h1>
     <h2>You are investing money for your great future! </h2>
-    <h2>Your donation history</h2>
-    <% if current_user.payments.length == 0 %>
-        <p>No donation yet, but you have a chance.</p>
-    <% else %>
-        <table>
-            <tr>
-                <th>Amount</th>
-                <th>Comment</th>
-                <th>When</th>
-            </tr>
-            <% current_user.payments.each do |payment| %>
+    <div class="history">
+        <h2>Your donation history</h2>
+        <% if current_user.payments.length == 0 %>
+            <p>No donation yet, but you have a chance.</p>
+        <% else %>
+            <table>
                 <tr>
-                    <td><%= payment.amount %></td>
-                    <td><%= payment.comment %></td>
-                    <td><%= payment.created_at.to_time.strftime("%B %e at %l:%M %p") %></td>
+                    <th>Amount</th>
+                    <th>Comment</th>
+                    <th>When</th>
                 </tr>
-            <% end %>
-        </table>
-    <% end %>
-    <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "authenticaion" %>
+                <% current_user.payments.each do |payment| %>
+                    <tr>
+                        <td><%= payment.amount %></td>
+                        <td><%= payment.comment %></td>
+                        <td><%= payment.created_at.to_time.strftime("%B %e at %l:%M %p") %></td>
+                    </tr>
+                <% end %>
+            </table>
+        <% end %>
+    </div>
 </section>
 <%= render "partials/checkout" %>
