@@ -2,7 +2,9 @@
     <h1>Thank you for helping me</h1>
     <h2>You are investing money for your great future! </h2>
     <h2>Your donation history</h2>
-    <% if current_user.payments.length != 0 %>
+    <% if current_user.payments.length == 0 %>
+        <p>No donation yet, but you have a chance.</p>
+    <% else %>
         <table>
             <tr>
                 <th>Amount</th>
@@ -17,4 +19,7 @@
                 </tr>
             <% end %>
         </table>
+    <% end %>
+    <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "authenticaion" %>
 </section>
+<%= render "partials/checkout" %>

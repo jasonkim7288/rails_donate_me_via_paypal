@@ -1,0 +1,21 @@
+<aside>
+    <%= form_with model: @payment do |f| %>
+        <table>
+            <tr>
+                <td><%= f.label "Amount (AUD)" %></td>
+                <td><%= f.text_field :amount %></td>
+            </tr>
+            <tr>
+                <td><%= f.label :comment %></td>
+                <td><%= f.rich_text_area :comment %></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+                    <script>paypal.Buttons().render('body');</script>
+                </td>
+            </tr>
+        </table>
+    <% end %>
+</aside>
