@@ -1,5 +1,5 @@
 <aside>
-    <%= form_with model: @payment do |f| %>
+    <%= form_with model: @payment, url: '/pages/create' do |f| %>
         <table>
             <tr>
                 <td><%= f.label "Amount (AUD)" %></td>
@@ -12,10 +12,10 @@
             <tr>
                 <td></td>
                 <td>
-                    <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
-                    <script>paypal.Buttons().render('body');</script>
+                    <input type="submit" name="commit" value="" class="paypal" data-disable-with="" style="background-image: url(<%= asset_path 'paypal.png' %>);">
                 </td>
             </tr>
         </table>
     <% end %>
 </aside>
+
