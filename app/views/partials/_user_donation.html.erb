@@ -12,7 +12,7 @@
                     <th>Comment</th>
                     <th>When</th>
                 </tr>
-                <% current_user.payments.each do |payment| %>
+                <% @payments.each do |payment| %>
                     <tr>
                         <td><%= payment.amount %></td>
                         <td><%= payment.comment %></td>
@@ -20,6 +20,7 @@
                     </tr>
                 <% end %>
             </table>
+            <%= will_paginate @payments, class: "page" %>
             <h2>Total amount: $<%= @total_amount %></h2>
         <% end %>
     </div>

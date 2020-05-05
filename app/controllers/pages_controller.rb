@@ -4,7 +4,8 @@ class PagesController < ApplicationController
 
     def donation
         @total_amount = 0
-        current_user.payments.each do |payment|
+        @payments = current_user.payments.order('created_at DESC').paginate(per_page: 5, page: params[:page])
+        @payments.each do |payment|
             @total_amount += payment.amount
         end
         @payment = Payment.new()

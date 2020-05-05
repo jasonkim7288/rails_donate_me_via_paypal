@@ -71,6 +71,21 @@ td, th {
     padding: 10px;
 }
 
+.page {
+    padding: 10px 50px 30px;
+    a, span, em {
+        padding: 10px;
+        color: #979797;
+    }
+    .current {
+        color: black;
+        font-style: normal;
+    }
+    a:hover {
+        color: black;
+    }
+}
+
 input {
     padding: 5px;
 }
