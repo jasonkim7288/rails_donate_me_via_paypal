@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h2>Hello <%= @payment.user.user_name %>,</h2>
+    <p>I sincerely appreciate your donation.</p>
+    <br />
+    <p>Here is your donation information.</p>
+    <p>Name : <%= @payment.user.user_name %></p>
+    <p>Donation amount : $<%= @payment.amount %></p>
+    <p>Donated at : <%= @payment.created_at.to_time.strftime("%B %e at %l:%M %p") %></p>
+    <br />
+    <p>Thank you.</p>
+    <br />
+    <p>Best Regards,</p>
+    <p>Jason</p>
+
+</body>
+</html>

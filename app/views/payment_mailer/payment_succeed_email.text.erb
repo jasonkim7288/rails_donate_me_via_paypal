@@ -1,0 +1,13 @@
+Hello <%= @payment.user.user_name %>,
+
+I sincerely appreciate your donation.
+
+Here is your donation information.
+Name : <%= @payment.user.user_name %>
+Donation amount : $<%= @payment.amount %>
+Donated at : <%= @payment.created_at.to_time.strftime("%B %e at %l:%M %p") %>
+
+Thank you.
+
+Best Regards,
+Jason

@@ -3,12 +3,14 @@ class PagesController < ApplicationController
     before_action :authenticate_user!, only: [:create]
 
     def donation
-        @total_amount = 0
-        @payments = current_user.payments.order('created_at DESC').paginate(per_page: 5, page: params[:page])
-        @payments.each do |payment|
-            @total_amount += payment.amount
+        if user_signed_in?
+            @total_amount = 0
+            @payments = current_user.payments.order('created_at DESC').paginate(per_page: 5, page: params[:page])
+            @payments.each do |payment|
+                @total_amount += payment.amount
+            end
+            @payment = Payment.new()
         end
-        @payment = Payment.new()
     end
 
     def create
@@ -37,16 +39,16 @@ class PagesController < ApplicationController
     def notify
         params.permit!
         status = params[:payment_status]
-        payment = Payment.find(params[:item_number])
+        @payment = Payment.find(params[:item_number])
         if status == "Completed"
-            payment.update_attributes paid: true
+            if @payment.paid == false
+                PaymentMailer.with(payment: @payment).payment_succeed_email.deliver_later
+                @payment.update_attributes paid: true
+            end
         else
-            payment.destroy
+            @payment.destroy
         end
         render nothing: true
-    end
-
-    def success
     end
 
     private
