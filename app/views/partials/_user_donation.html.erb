@@ -1,12 +1,13 @@
 <section>
     <h1>Welcome, <%= current_user.user_name %></h1>
-    <h2>You are investing money for your great future! </h2>
+    <h2 class="description">You are investing money for your great future! </h2>
+    <%= render "partials/checkout" %>    
     <div class="history">
         <h2>Your donation history</h2>
         <% if current_user.payments.length == 0 %>
             <p>No donation yet, but you have a chance.</p>
         <% else %>
-            <table>
+            <table cellspacing="0">
                 <tr>
                     <th>Amount</th>
                     <th>Comment</th>
@@ -14,7 +15,7 @@
                 </tr>
                 <% @payments.each do |payment| %>
                     <tr>
-                        <td><%= payment.amount %></td>
+                        <td>$<%= payment.amount %></td>
                         <td><%= payment.comment %></td>
                         <td><%= payment.created_at.to_time.strftime("%B %e at %l:%M %p") %></td>
                     </tr>
@@ -25,4 +26,4 @@
         <% end %>
     </div>
 </section>
-<%= render "partials/checkout" %>
+

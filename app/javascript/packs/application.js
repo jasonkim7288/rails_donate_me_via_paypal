@@ -17,3 +17,9 @@ require("channels")
 
 require("trix")
 require("@rails/actiontext")
+
+$(document).ready( () => {
+    $("table tr:nth-child(odd)").addClass("odd-row");
+    $("table td:nth-child(2)").addClass("aligh-left");
+    $("table td:last-child, table th:last-child").addClass("last");
+});
