@@ -1,0 +1,25 @@
+<section>
+    <h1>Administration</h1>
+    <div class="history">
+        <%= render 'partials/chart' %>
+        <h2>All user's donation history</h2>
+        <table cellspacing="0">
+            <tr>
+                <th>Donor</th>
+                <th>Amount</th>
+                <th>Comment</th>
+                <th>When</th>
+            </tr>
+            <% @payments.each do |payment| %>
+                <tr>
+                    <td><%= payment.user.user_name %></td>
+                    <td>$<%= payment.amount %></td>
+                    <td><%= payment.comment %></td>
+                    <td><%= payment.created_at.to_time.strftime("%B %e at %l:%M %p") %></td>
+                </tr>
+            <% end %>
+        </table>
+        <%= will_paginate @payments, class: "page" %>
+        <h2>Total amount: $<%= @total_amount %></h2>
+    </div>
+</section>

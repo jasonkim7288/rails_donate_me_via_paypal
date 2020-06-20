@@ -5,11 +5,16 @@ class PagesController < ApplicationController
     def donation
         if user_signed_in?
             @total_amount = 0
-            @payments = current_user.payments.order('created_at DESC').paginate(per_page: 5, page: params[:page])
-            @payments.each do |payment|
+            if current_user.admin == true
+                @payments = Payment.all.order('created_at DESC').paginate(per_page: 5, page: params[:page])
+                @users = User.all
+            else
+                @payments = current_user.payments.order('created_at DESC').paginate(per_page: 5, page: params[:page])
+                @payment = Payment.new()
+            end
+            Payment.all.each do |payment|
                 @total_amount += payment.amount
             end
-            @payment = Payment.new()
         end
     end
 

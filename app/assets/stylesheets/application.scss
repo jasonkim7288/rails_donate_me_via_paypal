@@ -128,5 +128,9 @@ input {
     &:hover {
         cursor: pointer;
     }
-    
+}
+
+canvas {
+    display: inline-block;
+    border: 1px solid #000;
 }
